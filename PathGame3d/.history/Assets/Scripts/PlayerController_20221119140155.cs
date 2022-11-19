@@ -10,8 +10,7 @@ public class PlayerController : MonoBehaviour
     public List<GameObject> ammo = new List<GameObject>();
 
     //public GameObject[] ammos = new GameObject[3];
-    public GameObject redFruitPrefab;
-    public GameObject yellowFruitPrefab;
+    public GameObject fruitPrefab;
     
     [SerializeField] float timeBetweenShots;
     [SerializeField] private Rigidbody rb;
@@ -45,25 +44,22 @@ public class PlayerController : MonoBehaviour
     {   
         if (ammo[0] != null)
         {
-            GameObject shotFruit = Instantiate(ammo[0], new Vector3(transform.position.x, 1.5f, transform.position.z), Quaternion.identity);
-            ammo.Remove(ammo[0]);
+            GameObject shotFruit = Instantiate(ammo[0], new Vector3(transform.position.x, 2, transform.position.z), Quaternion.identity);
+            //ammo.
             shotFruit.GetComponent<Rigidbody>().AddForce(transform.forward * 300);
             timer = 0;
         }
 
     }
 
-    void OnCollisionExit(Collision other) 
+    void OnCollisionEnter(Collision other) 
     {
-        if (other.gameObject.tag == "RedFruit") //&&ammo[ammo.length] not null
+        if (other.gameObject.tag == "Fruit") //&&ammo[ammo.length] not null
         {
             Destroy(other.gameObject);
-            ammo.Add(redFruitPrefab);//only one
-        }
-        if (other.gameObject.tag == "YellowFruit") //&&ammo[ammo.length] not null
-        {
-            Destroy(other.gameObject);
-            ammo.Add(yellowFruitPrefab);
+            
         }
     }
+
+    ArrayList AddToArray(other)
 }

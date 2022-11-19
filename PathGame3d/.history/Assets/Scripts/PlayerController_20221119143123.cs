@@ -53,17 +53,17 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    void OnCollisionExit(Collision other) 
+    void OnCollisionEnter(Collision other) 
     {
         if (other.gameObject.tag == "RedFruit") //&&ammo[ammo.length] not null
         {
+            ammo.Add(redFruitPrefab);
             Destroy(other.gameObject);
-            ammo.Add(redFruitPrefab);//only one
         }
         if (other.gameObject.tag == "YellowFruit") //&&ammo[ammo.length] not null
         {
+            ammo.Add(YellowFruitPrefab);
             Destroy(other.gameObject);
-            ammo.Add(yellowFruitPrefab);
         }
     }
 }

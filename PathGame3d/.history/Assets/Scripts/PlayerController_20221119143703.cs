@@ -43,7 +43,7 @@ public class PlayerController : MonoBehaviour
 
     void Shoot()
     {   
-        if (ammo[0] != null)
+        if (ammo[0])
         {
             GameObject shotFruit = Instantiate(ammo[0], new Vector3(transform.position.x, 1.5f, transform.position.z), Quaternion.identity);
             ammo.Remove(ammo[0]);
@@ -53,12 +53,12 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    void OnCollisionExit(Collision other) 
+    void OnCollisionEnter(Collision other) 
     {
         if (other.gameObject.tag == "RedFruit") //&&ammo[ammo.length] not null
         {
             Destroy(other.gameObject);
-            ammo.Add(redFruitPrefab);//only one
+            ammo.Add(redFruitPrefab);
         }
         if (other.gameObject.tag == "YellowFruit") //&&ammo[ammo.length] not null
         {

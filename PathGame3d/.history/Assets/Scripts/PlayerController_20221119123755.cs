@@ -7,11 +7,8 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-    public List<GameObject> ammo = new List<GameObject>();
-
-    //public GameObject[] ammos = new GameObject[3];
-    public GameObject redFruitPrefab;
-    public GameObject yellowFruitPrefab;
+    public GameObject[] ammo;
+    public GameObject fruitPrefab;
     
     [SerializeField] float timeBetweenShots;
     [SerializeField] private Rigidbody rb;
@@ -22,7 +19,8 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        timer += Time.deltaTime;
+        timer = Time.deltaTime;
+        Debug.Log(timer);
 
         if (!Touchscreen.current.primaryTouch.press.isPressed)
         {
@@ -42,28 +40,11 @@ public class PlayerController : MonoBehaviour
     }
 
     void Shoot()
-    {   
-        if (ammo[0] != null)
-        {
-            GameObject shotFruit = Instantiate(ammo[0], new Vector3(transform.position.x, 1.5f, transform.position.z), Quaternion.identity);
-            ammo.Remove(ammo[0]);
-            shotFruit.GetComponent<Rigidbody>().AddForce(transform.forward * 300);
-            timer = 0;
-        }
-
-    }
-
-    void OnCollisionExit(Collision other) 
     {
-        if (other.gameObject.tag == "RedFruit") //&&ammo[ammo.length] not null
-        {
-            Destroy(other.gameObject);
-            ammo.Add(redFruitPrefab);//only one
-        }
-        if (other.gameObject.tag == "YellowFruit") //&&ammo[ammo.length] not null
-        {
-            Destroy(other.gameObject);
-            ammo.Add(yellowFruitPrefab);
-        }
+        Debug.Log(ammo.Length);
+        
+        //Instantiate(fruitPrefab, transform.position, Quaternion.identity);
+        timer = 0;
+        
     }
 }
