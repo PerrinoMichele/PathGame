@@ -46,9 +46,9 @@ public class PlayerController : MonoBehaviour
     {   
         if (ammo[0] != null)//Fix
         {
-            GameObject shotFruit = Instantiate(ammo[0], new Vector3(transform.position.x, transform.position.y + 2f, transform.position.z), Quaternion.identity);
+            GameObject shotFruit = Instantiate(ammo[0], new Vector3(transform.position.x, 1.5f, transform.position.z), Quaternion.identity);
             ammo.Remove(ammo[0]);
-            shotFruit.GetComponent<Rigidbody>().AddForce(transform.forward * fruitShootingForce); // forward should be something tweakable to try different shooting angles
+            shotFruit.GetComponent<Rigidbody>().AddForce(transform.forward * fruitShootingForce); // forward should be something tweakable to have some angle
             timer = 0;
         }
 

@@ -5,12 +5,12 @@ using UnityEngine;
 public class FixShadowY : MonoBehaviour
 {
     public GameObject shadowCaster;
-    public float shadowY = 0f;
+    public float shadowY = 0.2f;
     
     void Update() {
         Vector3 pos = shadowCaster.transform.position;
         pos.y = shadowY;
-        transform.rotation = Quaternion.Euler(0, 0, 0);
+        transform.rotation = Quaternion.identity;
         transform.position = pos;
     }
 }
