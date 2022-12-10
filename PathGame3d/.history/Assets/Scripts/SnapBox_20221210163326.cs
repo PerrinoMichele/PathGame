@@ -16,17 +16,16 @@ public class SnapBox : MonoBehaviour
     {
         if(other.gameObject.tag == "Ground")
         {
-            isTouching = false;
+            isTouchingGround = false;
         }
     }
 
     void Update()
     {
-        if (isTouching == true)
+        if (isTouchingGround == true)
         {
             coordinates.x = Mathf.RoundToInt(transform.position.x / UnityEditor.EditorSnapSettings.move.x);
             coordinates.z = Mathf.RoundToInt(transform.position.z / UnityEditor.EditorSnapSettings.move.z);
-            coordinates.y = Mathf.RoundToInt(transform.position.y / UnityEditor.EditorSnapSettings.move.y);
             
             transform.position = coordinates;            
         }
