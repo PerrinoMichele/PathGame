@@ -43,7 +43,7 @@ public class PlayerController : MonoBehaviour
 
     void Shoot()
     {   
-        if (ammo.Count > 0)//Fix
+        if (ammo[0] != null)//Fix
         {
             GameObject fruitShot = Instantiate(ammo[0], new Vector3(transform.position.x, transform.position.y + 2f, transform.position.z), Quaternion.identity);
             ammo.Remove(ammo[0]);
