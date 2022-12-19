@@ -146,6 +146,7 @@ Library: lib_burst_generated
 --output=D:\PathGame3d\PathGame3d\Temp\StagingArea\tempburstlibs\armeabi-v7a\lib_burst_generated
 --root-assembly=D:\PathGame3d\PathGame3d\Temp\StagingArea\Data\Managed\UnityEngine.UI.dll
 --root-assembly=D:\PathGame3d\PathGame3d\Temp\StagingArea\Data\Managed\Unity.RenderPipelines.Core.Runtime.dll
+--root-assembly=D:\PathGame3d\PathGame3d\Temp\StagingArea\Data\Managed\Assembly-CSharp.dll
 --root-assembly=D:\PathGame3d\PathGame3d\Temp\StagingArea\Data\Managed\Unity.Services.Core.Telemetry.dll
 --root-assembly=D:\PathGame3d\PathGame3d\Temp\StagingArea\Data\Managed\Unity.InputSystem.dll
 --root-assembly=D:\PathGame3d\PathGame3d\Temp\StagingArea\Data\Managed\Unity.VisualScripting.State.dll
@@ -156,7 +157,6 @@ Library: lib_burst_generated
 --root-assembly=D:\PathGame3d\PathGame3d\Temp\StagingArea\Data\Managed\Unity.TextMeshPro.dll
 --root-assembly=D:\PathGame3d\PathGame3d\Temp\StagingArea\Data\Managed\Unity.Burst.dll
 --root-assembly=D:\PathGame3d\PathGame3d\Temp\StagingArea\Data\Managed\Unity.RenderPipeline.Universal.ShaderLibrary.dll
---root-assembly=D:\PathGame3d\PathGame3d\Temp\StagingArea\Data\Managed\Assembly-CSharp.dll
 --root-assembly=D:\PathGame3d\PathGame3d\Temp\StagingArea\Data\Managed\Unity.Services.Core.Environments.dll
 --root-assembly=D:\PathGame3d\PathGame3d\Temp\StagingArea\Data\Managed\Unity.Services.Core.Internal.dll
 --root-assembly=D:\PathGame3d\PathGame3d\Temp\StagingArea\Data\Managed\Unity.Timeline.dll
