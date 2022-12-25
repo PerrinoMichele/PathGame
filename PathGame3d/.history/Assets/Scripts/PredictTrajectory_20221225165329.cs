@@ -49,12 +49,10 @@ public class PredictTrajectory : MonoBehaviour
             //find where we hit FIX
             Vector3 lastPosition = lineRenderer.GetPosition(i - 1);
 
-            if (Physics.Raycast(lastPosition, (point -lastPosition).normalized, out RaycastHit hit, (point - lastPosition).magnitude, boxCollisionMask))
+            if (Physics.Raycast(lastPosition, -(point -lastPosition).normalized, out RaycastHit hit, (point - lastPosition).magnitude, boxCollisionMask))
             {
                 lineRenderer.SetPosition(i, hit.point);
                 lineRenderer.positionCount = i + 1;
-                //Debug.Log(lastPosition); Activate box shadow in last position
-
                 return;
             }
         }

@@ -53,8 +53,7 @@ public class PredictTrajectory : MonoBehaviour
             {
                 lineRenderer.SetPosition(i, hit.point);
                 lineRenderer.positionCount = i + 1;
-                //Debug.Log(lastPosition); Activate box shadow in last position
-
+                Debug.Log(lastPosition);
                 return;
             }
         }
