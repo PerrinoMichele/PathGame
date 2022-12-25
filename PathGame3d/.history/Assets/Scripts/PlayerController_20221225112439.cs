@@ -12,13 +12,14 @@ public class PlayerController : MonoBehaviour
     public GameObject yellowFruitPrefab;
     public GameObject boxPrefab;
 
-    [SerializeField] float fruitShootingForce = 10;//make this accessible from other scripts
+    [SerializeField] float fruitShootingForce = 600;//make this accessible from other scripts
     [SerializeField] float timeBetweenShots;
     [SerializeField] private Rigidbody rb;
     [SerializeField] private FixedJoystick joystick;
     [SerializeField] private float moveSpeed;
 
     private float timer = 0;
+    private LineRenderer lineRenderer;
 
     void FixedUpdate()
     {
@@ -47,7 +48,7 @@ public class PlayerController : MonoBehaviour
         {
             GameObject fruitShot = Instantiate(ammo[0], new Vector3(transform.position.x, transform.position.y + 1.2f, transform.position.z), Quaternion.identity);//make 1.2 a variable
             ammo.Remove(ammo[0]);
-            fruitShot.GetComponent<Rigidbody>().AddForce(transform.forward * fruitShootingForce, ForceMode.VelocityChange); // forward should be something tweakable to try different shooting angles
+            fruitShot.GetComponent<Rigidbody>().AddForce(transform.forward * fruitShootingForce); // forward should be something tweakable to try different shooting angles
             timer = 0;
         }
         else { return; }

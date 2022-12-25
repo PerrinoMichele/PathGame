@@ -6,7 +6,7 @@ public class SnapBox : MonoBehaviour
 {
     public bool isTouching = false;
     Vector3Int coordinates = new Vector3Int();
-    //create a list of transforms called neighbors; in Start, fill this list with all neighboring positions
+    GameObject[] neighbors;
 
     void OnCollisionEnter(Collision other) 
     {
@@ -33,7 +33,8 @@ public class SnapBox : MonoBehaviour
             //deactivate gravity
             gameObject.GetComponent<Rigidbody>().isKinematic = true;
 
-            //check each neighbor to make sure there is something there or else move down by one until it has a neighbor
+            //make sure it has a neighbor or else move down
+            //for each
         }
     }
 }

@@ -107,6 +107,7 @@ GameObject:
   m_Component:
   - component: {fileID: 958484122982354306}
   - component: {fileID: 958484122982354319}
+  - component: {fileID: 296503729472058662}
   - component: {fileID: 958484122982354304}
   - component: {fileID: 958484122982354305}
   m_Layer: 0
@@ -148,12 +149,26 @@ MonoBehaviour:
   ammo: []
   redFruitPrefab: {fileID: 3992223304549903171, guid: c55420d0b7dc8b44891e3b794c2f57ca, type: 3}
   yellowFruitPrefab: {fileID: 4423458833410791066, guid: 26159cf108c39a841b0b655be19c7adf, type: 3}
-  boxPrefab: {fileID: 0}
+  boxPrefab: {fileID: 8458906548170224744, guid: 2650ee0a3d956914696a902ad8c17d60, type: 3}
   fruitShootingForce: 450
   timeBetweenShots: 1.33
   rb: {fileID: 958484122982354304}
   joystick: {fileID: 0}
   moveSpeed: 5
+--- !u!114 &296503729472058662
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 958484122982354310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e74a849ec9596224caf9fa19e5485675, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lineRenderer: {fileID: 0}
+  releasePos: {fileID: 0}
 --- !u!54 &958484122982354304
 Rigidbody:
   m_ObjectHideFlags: 0

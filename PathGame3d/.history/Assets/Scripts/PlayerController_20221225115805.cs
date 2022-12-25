@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour
     public GameObject yellowFruitPrefab;
     public GameObject boxPrefab;
 
-    [SerializeField] float fruitShootingForce = 10;//make this accessible from other scripts
+    [SerializeField] float fruitShootingForce = 600;//make this accessible from other scripts
     [SerializeField] float timeBetweenShots;
     [SerializeField] private Rigidbody rb;
     [SerializeField] private FixedJoystick joystick;
