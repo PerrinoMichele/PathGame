@@ -10,7 +10,7 @@ public class PredictTrajectory : MonoBehaviour
     [SerializeField][Range(10,100)] private int LinePoints = 25;
     [SerializeField][Range(0.01f,0.25f)] private float TimeBetweenPoints = 0.1f;
     
-    public GameObject boxPrefab;
+    public GameObject boxPrefab; //instead of box we should have the object prefab being thrown(the one first in the list of ammo) (look at enum, and rick's way of doing hooking up ammo)
     public GameObject currentObject;
     public PlayerController playerController;
     
@@ -30,6 +30,7 @@ public class PredictTrajectory : MonoBehaviour
 
     public void Update() 
     {
+        Debug.Log(currentObject);
         GetCurrentObject();
         if (currentObject != null)
         {
@@ -49,7 +50,7 @@ public class PredictTrajectory : MonoBehaviour
         lineRenderer.enabled = true;
         lineRenderer.positionCount = Mathf.CeilToInt (LinePoints / TimeBetweenPoints) + 1;
         Vector3 startPosition = releasePos.position;
-        Vector3 startVelocity = playerController.fruitShootingForce * transform.forward / currentObject.GetComponent<Rigidbody>().mass;
+        Vector3 startVelocity = playerController.fruitShootingForce * transform.forward / currentObject.GetComponent<Rigidbody>().mass;//hook up the variable instead of 10 (variable will probably differ according to weapon); 
         int i = 0;
         lineRenderer.SetPosition(i, startPosition);
         for(float time = 0; time < LinePoints; time += TimeBetweenPoints)

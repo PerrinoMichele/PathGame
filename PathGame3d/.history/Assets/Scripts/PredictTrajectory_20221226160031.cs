@@ -10,7 +10,7 @@ public class PredictTrajectory : MonoBehaviour
     [SerializeField][Range(10,100)] private int LinePoints = 25;
     [SerializeField][Range(0.01f,0.25f)] private float TimeBetweenPoints = 0.1f;
     
-    public GameObject boxPrefab;
+    public GameObject boxPrefab; //instead of box we should have the object prefab being thrown(the one first in the list of ammo) (look at enum, and rick's way of doing hooking up ammo)
     public GameObject currentObject;
     public PlayerController playerController;
     

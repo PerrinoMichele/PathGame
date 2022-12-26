@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,7 +13,7 @@ public class PlayerController : MonoBehaviour
     public GameObject boxPrefab;
     public GameObject currentThrowableObject;
 
-    [SerializeField] public float fruitShootingForce = 10;//make this accessible from other scripts
+    [SerializeField] float fruitShootingForce = 10;//make this accessible from other scripts
     [SerializeField] float timeBetweenShots;
     [SerializeField] private Rigidbody rb;
     [SerializeField] private FixedJoystick joystick;
@@ -26,30 +25,18 @@ public class PlayerController : MonoBehaviour
     {
         timer += Time.deltaTime;
 
-        currentThrowableObject = GetCurrentThrowableObject();
-
         if (!Touchscreen.current.primaryTouch.press.isPressed)
         {
             StopPlayer();
             if (timer >= timeBetweenShots)
             {
-                Shoot(currentThrowableObject);
+                Shoot();
             }
         }
         else
         {
             MovePlayer();
         }
-    }
-
-    private GameObject GetCurrentThrowableObject()
-    {
-        if (ammo.Count > 0)
-        {
-            currentThrowableObject = ammo[0];
-        }
-        else { currentThrowableObject = null; }
-        return currentThrowableObject;
     }
 
     private void MovePlayer()
@@ -64,13 +51,13 @@ public class PlayerController : MonoBehaviour
         rb.angularVelocity = Vector3.zero;
     }
 
-    void Shoot(GameObject currentThrowableObject)
+    void Shoot()
     {   
         if (ammo.Count > 0)
         {
-            GameObject fruitShot = Instantiate(currentThrowableObject, new Vector3(transform.position.x, transform.position.y + 1.2f, transform.position.z), Quaternion.identity);//make 1.2 a variable
+            GameObject fruitShot = Instantiate(ammo[0], new Vector3(transform.position.x, transform.position.y + 1.2f, transform.position.z), Quaternion.identity);//make 1.2 a variable
             ammo.Remove(ammo[0]);
-            fruitShot.GetComponent<Rigidbody>().AddForce(transform.forward * fruitShootingForce, ForceMode.Impulse); // forward should be something tweakable to try different shooting angles
+            fruitShot.GetComponent<Rigidbody>().AddForce(transform.forward * fruitShootingForce, ForceMode.VelocityChange); // forward should be something tweakable to try different shooting angles
             timer = 0;
         }
         else { return; }

@@ -14,7 +14,7 @@ public class PlayerController : MonoBehaviour
     public GameObject boxPrefab;
     public GameObject currentThrowableObject;
 
-    [SerializeField] public float fruitShootingForce = 10;//make this accessible from other scripts
+    [SerializeField] float fruitShootingForce = 100;//make this accessible from other scripts
     [SerializeField] float timeBetweenShots;
     [SerializeField] private Rigidbody rb;
     [SerializeField] private FixedJoystick joystick;
@@ -48,7 +48,6 @@ public class PlayerController : MonoBehaviour
         {
             currentThrowableObject = ammo[0];
         }
-        else { currentThrowableObject = null; }
         return currentThrowableObject;
     }
 

@@ -48,7 +48,6 @@ public class PlayerController : MonoBehaviour
         {
             currentThrowableObject = ammo[0];
         }
-        else { currentThrowableObject = null; }
         return currentThrowableObject;
     }
 
