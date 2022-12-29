@@ -9,30 +9,14 @@ public class SnapBox : MonoBehaviour
 
     public bool isTouching = false;
     Vector3Int coordinates = new Vector3Int();
-    public List<Vector3> neighboringTiles = new List<Vector3>();
+    public List<Vector3> neighboringTiles = new List<Vector3>();   
 
     void OnTriggerEnter(Collider other) 
     {
         SnapToGrid();
-        AddNewNeighbors();
+        AddNeighbors();
+        NeighborCollides();
         return;
-    }
-
-    void Update()
-    {
-        if (gameObject.GetComponent<Rigidbody>().isKinematic == true)
-        {
-            if (NeighborCollides() == false)
-            {           
-                MoveBoxDown();
-                AddNewNeighbors();
-            }
-        }
-    }
-
-    private void MoveBoxDown()
-    {
-        transform.position += Vector3.down;
     }
 
     private void OnDrawGizmos() {
@@ -54,9 +38,8 @@ public class SnapBox : MonoBehaviour
         gameObject.GetComponent<Collider>().isTrigger = false;
     }
 
-    private void AddNewNeighbors()
+    private void AddNeighbors()
     {
-        neighboringTiles.Clear();
         neighboringTiles.Add(new Vector3(transform.position.x, transform.position.y + 1, transform.position.z));
         neighboringTiles.Add(new Vector3(transform.position.x, transform.position.y - 1, transform.position.z));
         neighboringTiles.Add(new Vector3(transform.position.x + 1, transform.position.y, transform.position.z));
@@ -71,13 +54,14 @@ public class SnapBox : MonoBehaviour
         {
             if(Physics.CheckSphere(neighboringTile, sphereRadius))
             {
-                return true;
+                return false;
             }
+            else { return false; }
         }
-
-    
-        return false;
     }
 
-
+    private void MoveBoxDown()
+    {
+        this.transform.position += Vector3.down;
+    }
 }

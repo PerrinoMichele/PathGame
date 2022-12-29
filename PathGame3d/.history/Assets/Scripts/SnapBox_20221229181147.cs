@@ -14,7 +14,8 @@ public class SnapBox : MonoBehaviour
     void OnTriggerEnter(Collider other) 
     {
         SnapToGrid();
-        AddNewNeighbors();
+        AddNeighbors();
+
         return;
     }
 
@@ -25,7 +26,6 @@ public class SnapBox : MonoBehaviour
             if (NeighborCollides() == false)
             {           
                 MoveBoxDown();
-                AddNewNeighbors();
             }
         }
     }
@@ -54,9 +54,8 @@ public class SnapBox : MonoBehaviour
         gameObject.GetComponent<Collider>().isTrigger = false;
     }
 
-    private void AddNewNeighbors()
+    private void AddNeighbors()
     {
-        neighboringTiles.Clear();
         neighboringTiles.Add(new Vector3(transform.position.x, transform.position.y + 1, transform.position.z));
         neighboringTiles.Add(new Vector3(transform.position.x, transform.position.y - 1, transform.position.z));
         neighboringTiles.Add(new Vector3(transform.position.x + 1, transform.position.y, transform.position.z));

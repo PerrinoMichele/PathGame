@@ -197,7 +197,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7f6a08e683b3404aa7e301e43beb6ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sphereRadius: 0.1
   isTouching: 0
+  neighboringTiles: []
 --- !u!65 &7649802978490269397
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -206,7 +208,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8458906548170224744}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.8, y: 0.8, z: 0.8}
