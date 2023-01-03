@@ -36,6 +36,7 @@ public class PredictTrajectory : MonoBehaviour
         if (currentObject != null)
         {
             DrawProjection(currentObject);
+            ShowPredictionPrefab();
         }
         else { lineRenderer.enabled = false; }
     }
@@ -80,5 +81,10 @@ public class PredictTrajectory : MonoBehaviour
                 return;
             }
         }
+    }
+    
+    private void ShowPredictionPrefab()
+    {
+        throw new NotImplementedException();
     }
 }

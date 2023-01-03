@@ -19,7 +19,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Rigidbody rb;
     [SerializeField] private FixedJoystick joystick;
     [SerializeField] private float moveSpeed;
-    [SerializeField] private float degreePerSecond = 2;
 
     private float timer = 0;
 
@@ -56,8 +55,7 @@ public class PlayerController : MonoBehaviour
     private void MovePlayer()
     {
         rb.velocity = new Vector3(joystick.Horizontal * moveSpeed, rb.velocity.y, joystick.Vertical * moveSpeed);
-        Quaternion lookRot = Quaternion.LookRotation(rb.velocity);//make rotation speed a variable
-        transform.rotation = Quaternion.RotateTowards(transform.rotation, lookRot, Time.deltaTime * degreePerSecond);
+        transform.rotation = Quaternion.LookRotation(rb.velocity/20);//make rotation speed a variable
     }
 
     private void StopPlayer()

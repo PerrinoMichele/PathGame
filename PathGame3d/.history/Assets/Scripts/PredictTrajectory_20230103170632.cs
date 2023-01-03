@@ -43,7 +43,7 @@ public class PredictTrajectory : MonoBehaviour
     private void OnDrawGizmos() {
         Gizmos.color = Color.red;
 
-        Gizmos.DrawWireSphere(lastPosition, sphereRadius);
+        Gizmos.DrawWireSphere(, sphereRadius);
     }
 
     public GameObject GetCurrentObject()

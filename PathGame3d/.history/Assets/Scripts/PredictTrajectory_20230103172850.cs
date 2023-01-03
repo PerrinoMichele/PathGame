@@ -11,9 +11,10 @@ public class PredictTrajectory : MonoBehaviour
     [SerializeField][Range(0.01f,0.25f)] private float TimeBetweenPoints = 0.1f;
     
     public GameObject boxPrefab;
+    public GameObject boxPredictionPrefab;
     public GameObject currentObject;
     public PlayerController playerController;
-    public int sphereRadius = 1;
+    public int sphereRadius = 1;//delete
     public Vector3 lastPosition = new Vector3(0,0,0);
     
     private LayerMask throwableObjectCollisionMask;
@@ -36,11 +37,15 @@ public class PredictTrajectory : MonoBehaviour
         if (currentObject != null)
         {
             DrawProjection(currentObject);
+            ShowPredictionPrefab();
         }
-        else { lineRenderer.enabled = false; }
+        else 
+        { 
+            lineRenderer.enabled = false; 
+        }
     }
 
-    private void OnDrawGizmos() {
+    private void OnDrawGizmos() {//delete
         Gizmos.color = Color.red;
 
         Gizmos.DrawWireSphere(lastPosition, sphereRadius);
@@ -80,5 +85,10 @@ public class PredictTrajectory : MonoBehaviour
                 return;
             }
         }
+    }
+    
+    private void ShowPredictionPrefab()
+    {
+        throw new NotImplementedException();
     }
 }

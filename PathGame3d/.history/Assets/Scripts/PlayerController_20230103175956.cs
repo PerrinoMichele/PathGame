@@ -19,7 +19,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Rigidbody rb;
     [SerializeField] private FixedJoystick joystick;
     [SerializeField] private float moveSpeed;
-    [SerializeField] private float degreePerSecond = 2;
+    [SerializeField] private float degreePerSecond;
 
     private float timer = 0;
 
