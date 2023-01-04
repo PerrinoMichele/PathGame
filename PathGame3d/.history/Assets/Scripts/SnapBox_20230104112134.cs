@@ -34,6 +34,8 @@ public class SnapBox : MonoBehaviour
         }
     }
 
+
+
     void Update()
     {
         if (gameObject.GetComponent<Rigidbody>().isKinematic == true)
@@ -91,6 +93,7 @@ public class SnapBox : MonoBehaviour
                 return true;
             }
         }
+
     
         return false;
     }

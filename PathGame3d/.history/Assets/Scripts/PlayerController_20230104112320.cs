@@ -80,7 +80,7 @@ public class PlayerController : MonoBehaviour
 
     void OnCollisionEnter(Collision other) 
     {
-        if (other.gameObject.tag == "RedFruit") //&&ammo[ammo.length] not null, edite red fruit tag to ball
+        if (other.gameObject.tag == "RedFruit") //&&ammo[ammo.length] not null
         {
             Destroy(other.gameObject);
             ammo.Add(redFruitPrefab);//only one
@@ -92,12 +92,8 @@ public class PlayerController : MonoBehaviour
         }
         if (other.gameObject.tag == "Box") //&&ammo[ammo.length] not null // && box is pickable
         {
-            if(!other.gameObject.GetComponent<SnapBox>().isActiveAndEnabled)
-            {
-                Destroy(other.gameObject);
-                ammo.Add(boxPrefab);
-            }
-            else{ return; }
+            Destroy(other.gameObject);
+            ammo.Add(boxPrefab);
         }
     }
 }

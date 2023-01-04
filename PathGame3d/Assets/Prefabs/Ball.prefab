@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3992223304549903170}
   - component: {fileID: 3992223304549903198}
   m_Layer: 3
-  m_Name: RedFruit
+  m_Name: Ball
   m_TagString: RedFruit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 3992223304549903171}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5032208241542980858}

@@ -18,7 +18,6 @@ public class SnapBox : MonoBehaviour
     {
         if (other.gameObject.tag == "RedFruit")
         {
-            //refactor
             isPickable = true;
             gameObject.GetComponent<BoxCollider>().size = new Vector3(1,1,1);
             gameObject.GetComponent<Rigidbody>().isKinematic = false;
@@ -31,8 +30,11 @@ public class SnapBox : MonoBehaviour
             SnapToGrid();
             AddNewNeighbors();
             return;
+            //Make collider size .8,.8,.8
         }
     }
+
+
 
     void Update()
     {
@@ -91,6 +93,7 @@ public class SnapBox : MonoBehaviour
                 return true;
             }
         }
+
     
         return false;
     }

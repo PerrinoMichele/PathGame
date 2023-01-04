@@ -92,7 +92,7 @@ public class PlayerController : MonoBehaviour
         }
         if (other.gameObject.tag == "Box") //&&ammo[ammo.length] not null // && box is pickable
         {
-            if(!other.gameObject.GetComponent<SnapBox>().isActiveAndEnabled)
+            if(other.gameObject.GetComponent<SnapBox>().isActiveAndEnabled)
             {
                 Destroy(other.gameObject);
                 ammo.Add(boxPrefab);

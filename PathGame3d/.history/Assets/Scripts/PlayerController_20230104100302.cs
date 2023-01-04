@@ -56,8 +56,8 @@ public class PlayerController : MonoBehaviour
     private void MovePlayer()
     {
         rb.velocity = new Vector3(joystick.Horizontal * moveSpeed, rb.velocity.y, joystick.Vertical * moveSpeed);
-        Quaternion lookRot = Quaternion.LookRotation(rb.velocity);
-        transform.rotation = Quaternion.RotateTowards(transform.rotation, lookRot, Time.deltaTime * degreePerSecond);
+        transform.rotation = Quaternion.LookRotation(rb.velocity);//make rotation speed a variable
+        //transform.rotation = Quaternion.RotateTowards(transform.rotation, lookRot, Time.deltaTime * degreePerSecond);
     }
 
     private void StopPlayer()
@@ -78,9 +78,9 @@ public class PlayerController : MonoBehaviour
         else { return; }
     }
 
-    void OnCollisionEnter(Collision other) 
+    void OnCollisionExit(Collision other) 
     {
-        if (other.gameObject.tag == "RedFruit") //&&ammo[ammo.length] not null, edite red fruit tag to ball
+        if (other.gameObject.tag == "RedFruit") //&&ammo[ammo.length] not null
         {
             Destroy(other.gameObject);
             ammo.Add(redFruitPrefab);//only one
@@ -90,14 +90,10 @@ public class PlayerController : MonoBehaviour
             Destroy(other.gameObject);
             ammo.Add(yellowFruitPrefab);
         }
-        if (other.gameObject.tag == "Box") //&&ammo[ammo.length] not null // && box is pickable
+        if (other.gameObject.tag == "Box") //&&ammo[ammo.length] not null
         {
-            if(!other.gameObject.GetComponent<SnapBox>().isActiveAndEnabled)
-            {
-                Destroy(other.gameObject);
-                ammo.Add(boxPrefab);
-            }
-            else{ return; }
+            Destroy(other.gameObject);
+            ammo.Add(boxPrefab);
         }
     }
 }

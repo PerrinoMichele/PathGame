@@ -39,7 +39,7 @@ LineRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1471780475}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -283,11 +283,12 @@ MonoBehaviour:
   yellowFruitPrefab: {fileID: 4423458833410791066, guid: 26159cf108c39a841b0b655be19c7adf, type: 3}
   boxPrefab: {fileID: 8458906548170224744, guid: 2650ee0a3d956914696a902ad8c17d60, type: 3}
   currentThrowableObject: {fileID: 0}
-  fruitShootingForce: 10
-  timeBetweenShots: 1.33
+  fruitShootingForce: 5
+  timeBetweenShots: 1.4
   rb: {fileID: 958484122982354304}
   joystick: {fileID: 0}
-  moveSpeed: 5
+  moveSpeed: 4
+  degreePerSecond: 300
 --- !u!114 &296503729472058662
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -306,8 +307,9 @@ MonoBehaviour:
   TimeBetweenPoints: 0.1
   boxPrefab: {fileID: 8458906548170224744, guid: 2650ee0a3d956914696a902ad8c17d60, type: 3}
   currentObject: {fileID: 0}
-  playerController: {fileID: 0}
-  drawLine: 0
+  playerController: {fileID: 958484122982354319}
+  sphereRadius: 1
+  lastPosition: {x: 0, y: 0, z: 0}
 --- !u!54 &958484122982354304
 Rigidbody:
   m_ObjectHideFlags: 0

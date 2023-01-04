@@ -18,21 +18,23 @@ public class SnapBox : MonoBehaviour
     {
         if (other.gameObject.tag == "RedFruit")
         {
-            //refactor
-            isPickable = true;
-            gameObject.GetComponent<BoxCollider>().size = new Vector3(1,1,1);
-            gameObject.GetComponent<Rigidbody>().isKinematic = false;
-            gameObject.GetComponent<Rigidbody>().mass = 0.1f;
-            gameObject.GetComponent<MeshRenderer>().material = pickableBoxMat;
             this.GetComponent<SnapBox>().enabled = false;
+            gameObject.GetComponent<Rigidbody>().isKinematic = false;
+            isPickable = true; //Make collider size 1,1,1 ; Make box lighter
+            gameObject.GetComponent<Rigidbody>().mass = 0.1f;
+            gameObject.GetComponent<BoxCollider>().size = new Vector3(1,1,1);
+            gameObject.GetComponent<MeshRenderer>().material = pickableBoxMat;
         }
         else if (isPickable == false)
         {
             SnapToGrid();
             AddNewNeighbors();
             return;
+            //Make collider size .8,.8,.8
         }
     }
+
+
 
     void Update()
     {
@@ -91,6 +93,7 @@ public class SnapBox : MonoBehaviour
                 return true;
             }
         }
+
     
         return false;
     }

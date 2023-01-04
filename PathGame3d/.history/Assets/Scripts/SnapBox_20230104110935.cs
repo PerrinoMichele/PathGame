@@ -10,29 +10,27 @@ public class SnapBox : MonoBehaviour
     public bool isTouching = false;
     public List<Vector3> neighboringTiles = new List<Vector3>();
     public bool isPickable = false;
-    public Material pickableBoxMat;
-
     Vector3Int coordinates = new Vector3Int();
 
     void OnCollisionEnter(Collision other) 
     {
         if (other.gameObject.tag == "RedFruit")
         {
-            //refactor
-            isPickable = true;
-            gameObject.GetComponent<BoxCollider>().size = new Vector3(1,1,1);
-            gameObject.GetComponent<Rigidbody>().isKinematic = false;
-            gameObject.GetComponent<Rigidbody>().mass = 0.1f;
-            gameObject.GetComponent<MeshRenderer>().material = pickableBoxMat;
             this.GetComponent<SnapBox>().enabled = false;
+            gameObject.GetComponent<Rigidbody>().isKinematic = false;
+            Debug.Log("Hit by red fruit");
+            isPickable = true; //Make collider size 1,1,1 ; Make box lighter
         }
         else if (isPickable == false)
         {
             SnapToGrid();
             AddNewNeighbors();
             return;
+            //Make collider size .8,.8,.8
         }
     }
+
+
 
     void Update()
     {
@@ -91,6 +89,7 @@ public class SnapBox : MonoBehaviour
                 return true;
             }
         }
+
     
         return false;
     }

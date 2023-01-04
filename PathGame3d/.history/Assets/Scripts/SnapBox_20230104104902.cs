@@ -8,30 +8,14 @@ public class SnapBox : MonoBehaviour
     [SerializeField] float sphereRadius = 0.3f;
 
     public bool isTouching = false;
-    public List<Vector3> neighboringTiles = new List<Vector3>();
-    public bool isPickable = false;
-    public Material pickableBoxMat;
-
     Vector3Int coordinates = new Vector3Int();
+    public List<Vector3> neighboringTiles = new List<Vector3>();
 
     void OnCollisionEnter(Collision other) 
     {
-        if (other.gameObject.tag == "RedFruit")
-        {
-            //refactor
-            isPickable = true;
-            gameObject.GetComponent<BoxCollider>().size = new Vector3(1,1,1);
-            gameObject.GetComponent<Rigidbody>().isKinematic = false;
-            gameObject.GetComponent<Rigidbody>().mass = 0.1f;
-            gameObject.GetComponent<MeshRenderer>().material = pickableBoxMat;
-            this.GetComponent<SnapBox>().enabled = false;
-        }
-        else if (isPickable == false)
-        {
-            SnapToGrid();
-            AddNewNeighbors();
-            return;
-        }
+        SnapToGrid();
+        AddNewNeighbors();
+        return;
     }
 
     void Update()
@@ -67,7 +51,7 @@ public class SnapBox : MonoBehaviour
 
         transform.position = coordinates;
         gameObject.GetComponent<Rigidbody>().isKinematic = true;
-        //gameObject.GetComponent<Collider>().isTrigger = false;
+        gameObject.GetComponent<Collider>().isTrigger = false;
     }
 
     private void AddNewNeighbors()
@@ -91,6 +75,7 @@ public class SnapBox : MonoBehaviour
                 return true;
             }
         }
+
     
         return false;
     }
