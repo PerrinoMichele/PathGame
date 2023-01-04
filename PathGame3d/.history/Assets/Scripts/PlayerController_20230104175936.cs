@@ -9,7 +9,7 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] public float fruitShootingForce = 10;//make this accessible from other scripts
-    [SerializeField] public Vector3 shootingAngle;//make it tweakable & pass this value to predictTrajectory
+    [SerializeField] public Vector3 shootingAngle = new Vector3 (0f, 1f, .5f);
     [SerializeField] private Rigidbody rb;
     [SerializeField] private FixedJoystick joystick;
     [SerializeField] private float moveSpeed;
@@ -71,10 +71,10 @@ public class PlayerController : MonoBehaviour
     {   
         if (ammo.Count > 0)
         {
-            shootingAngle = transform.forward; //+ (transform.up/6);//make it tweakable
+            shootingAngle = new Vector3 ()
             GameObject fruitShot = Instantiate(currentThrowableObject, new Vector3(transform.position.x, transform.position.y + 1.2f, transform.position.z), Quaternion.identity);//make 1.2 a variable
             ammo.Remove(ammo[0]);
-            fruitShot.GetComponent<Rigidbody>().AddForce(shootingAngle * fruitShootingForce, ForceMode.Impulse); // forward should be something tweakable to try different shooting angles
+            fruitShot.GetComponent<Rigidbody>().AddForce(transform.forward * fruitShootingForce, ForceMode.Impulse); // forward should be something tweakable to try different shooting angles
             timer = 0;
         }
         else { return; }

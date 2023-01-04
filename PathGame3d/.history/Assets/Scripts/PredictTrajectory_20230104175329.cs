@@ -16,8 +16,7 @@ public class PredictTrajectory : MonoBehaviour
     public GameObject currentObject;
     public PlayerController playerController;
     public int sphereRadius = 1;
-    
-    private Vector3 lastPosition = new Vector3(0,0,0);
+    public Vector3 lastPosition = new Vector3(0,0,0);
     
     private LayerMask throwableObjectCollisionMask;
     private GameObject boxPredictionInstance;

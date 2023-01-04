@@ -12,16 +12,14 @@ public class PredictTrajectory : MonoBehaviour
     
     public GameObject boxPrefab;
     public GameObject boxPredictionPrefab;
-    public GameObject ballPredictionPrefab;
     public GameObject currentObject;
+    public bool isReadyToShoot;
     public PlayerController playerController;
     public int sphereRadius = 1;
-    
-    private Vector3 lastPosition = new Vector3(0,0,0);
+    public Vector3 lastPosition = new Vector3(0,0,0);
     
     private LayerMask throwableObjectCollisionMask;
     private GameObject boxPredictionInstance;
-    //private GameObject ballPredictionInstance;
 
     private void Awake() 
     {
@@ -38,32 +36,21 @@ public class PredictTrajectory : MonoBehaviour
     private void Start()
     {
         boxPredictionInstance = Instantiate(boxPredictionPrefab, lastPosition, transform.rotation);
-        //ballPredictionInstance = Instantiate(ballPredictionPrefab, lastPosition, transform.rotation);
     }
 
     public void Update() 
     {
         GetCurrentObject();
         IsShootTimerReady();
-        if (currentObject != null && IsShootTimerReady())
+        if (currentObject != null)
         {
             DrawProjection(currentObject);
-            if (currentObject.CompareTag("Box"))
-            {
-                boxPredictionInstance.SetActive(true);
-                boxPredictionInstance.transform.position = lastPosition;
-            }
-            // else if (currentObject.CompareTag("RedFruit"))
-            // {
-            //     ballPredictionInstance.SetActive(true);
-            //     ballPredictionInstance.transform.position = lastPosition;
-            // }
+            boxPredictionPrefab.transform.position = lastPosition;
         }
         else 
         { 
             lineRenderer.enabled = false; 
             boxPredictionInstance.SetActive(false);
-            //ballPredictionInstance.SetActive(false);
         }
     }
 
@@ -91,6 +78,7 @@ public class PredictTrajectory : MonoBehaviour
 
     private void DrawProjection(GameObject currentObject)
     {
+        boxPredictionInstance.SetActive(true);
         lineRenderer.enabled = true;
         lineRenderer.positionCount = Mathf.CeilToInt (LinePoints / TimeBetweenPoints) + 1;
         Vector3 startPosition = releasePos.position;
@@ -112,7 +100,7 @@ public class PredictTrajectory : MonoBehaviour
             {
                 lineRenderer.SetPosition(i, hit.point);
                 lineRenderer.positionCount = i + 1;
-               
+                boxPredictionInstance.transform.position = lastPosition;
                 return;
             }
         }

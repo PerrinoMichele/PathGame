@@ -16,12 +16,11 @@ public class PredictTrajectory : MonoBehaviour
     public GameObject currentObject;
     public PlayerController playerController;
     public int sphereRadius = 1;
-    
-    private Vector3 lastPosition = new Vector3(0,0,0);
+    public Vector3 lastPosition = new Vector3(0,0,0);
     
     private LayerMask throwableObjectCollisionMask;
     private GameObject boxPredictionInstance;
-    //private GameObject ballPredictionInstance;
+    private GameObject ballPredictionInstance;
 
     private void Awake() 
     {
@@ -38,7 +37,7 @@ public class PredictTrajectory : MonoBehaviour
     private void Start()
     {
         boxPredictionInstance = Instantiate(boxPredictionPrefab, lastPosition, transform.rotation);
-        //ballPredictionInstance = Instantiate(ballPredictionPrefab, lastPosition, transform.rotation);
+        ballPredictionInstance = Instantiate(ballPredictionPrefab, lastPosition, transform.rotation);
     }
 
     public void Update() 
@@ -53,17 +52,17 @@ public class PredictTrajectory : MonoBehaviour
                 boxPredictionInstance.SetActive(true);
                 boxPredictionInstance.transform.position = lastPosition;
             }
-            // else if (currentObject.CompareTag("RedFruit"))
-            // {
-            //     ballPredictionInstance.SetActive(true);
-            //     ballPredictionInstance.transform.position = lastPosition;
-            // }
+            else if (currentObject.CompareTag("RedFruit"))
+            {
+                ballPredictionInstance.SetActive(true);
+                ballPredictionInstance.transform.position = lastPosition;
+            }
         }
         else 
         { 
             lineRenderer.enabled = false; 
             boxPredictionInstance.SetActive(false);
-            //ballPredictionInstance.SetActive(false);
+            ballPredictionInstance.SetActive(false);
         }
     }
 

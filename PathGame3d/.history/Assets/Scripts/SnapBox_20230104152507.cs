@@ -47,7 +47,7 @@ public class SnapBox : MonoBehaviour
 
     private void MoveBoxDown()
     {
-        transform.position += Vector3.down; //add some lerp
+        transform.position += Vector3.down;
     }
 
     private void OnDrawGizmos() {//delete
@@ -64,7 +64,7 @@ public class SnapBox : MonoBehaviour
         coordinates.z = Mathf.RoundToInt(transform.position.z);
         coordinates.y = Mathf.RoundToInt(transform.position.y);
 
-        transform.position = coordinates; // add some lerp
+        transform.position = coordinates;
         gameObject.GetComponent<Rigidbody>().isKinematic = true;
         //gameObject.GetComponent<Collider>().isTrigger = false;
     }

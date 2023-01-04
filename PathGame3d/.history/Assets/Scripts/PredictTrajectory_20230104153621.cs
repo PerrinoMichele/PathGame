@@ -12,16 +12,12 @@ public class PredictTrajectory : MonoBehaviour
     
     public GameObject boxPrefab;
     public GameObject boxPredictionPrefab;
-    public GameObject ballPredictionPrefab;
     public GameObject currentObject;
     public PlayerController playerController;
     public int sphereRadius = 1;
-    
-    private Vector3 lastPosition = new Vector3(0,0,0);
+    public Vector3 lastPosition = new Vector3(0,0,0);
     
     private LayerMask throwableObjectCollisionMask;
-    private GameObject boxPredictionInstance;
-    //private GameObject ballPredictionInstance;
 
     private void Awake() 
     {
@@ -37,57 +33,31 @@ public class PredictTrajectory : MonoBehaviour
 
     private void Start()
     {
-        boxPredictionInstance = Instantiate(boxPredictionPrefab, lastPosition, transform.rotation);
-        //ballPredictionInstance = Instantiate(ballPredictionPrefab, lastPosition, transform.rotation);
+        Instantiate(boxPredictionPrefab);
+        boxPredictionPrefab.transform.position = new Vector3(0,0,0);
     }
 
     public void Update() 
     {
         GetCurrentObject();
-        IsShootTimerReady();
-        if (currentObject != null && IsShootTimerReady())
+        if (currentObject != null)
         {
             DrawProjection(currentObject);
-            if (currentObject.CompareTag("Box"))
-            {
-                boxPredictionInstance.SetActive(true);
-                boxPredictionInstance.transform.position = lastPosition;
-            }
-            // else if (currentObject.CompareTag("RedFruit"))
-            // {
-            //     ballPredictionInstance.SetActive(true);
-            //     ballPredictionInstance.transform.position = lastPosition;
-            // }
         }
-        else 
-        { 
-            lineRenderer.enabled = false; 
-            boxPredictionInstance.SetActive(false);
-            //ballPredictionInstance.SetActive(false);
-        }
+        else { lineRenderer.enabled = false; }
     }
 
-    private bool IsShootTimerReady()
-    {
-        if(playerController.timer >= playerController.timeBetweenShots)
-        {
-            return true;
-        }
-        else { return false; }
+    private void OnDrawGizmos() {
+        Gizmos.color = Color.red;
+
+        Gizmos.DrawWireSphere(lastPosition, sphereRadius);
     }
+
     public GameObject GetCurrentObject()
     {
         currentObject = playerController.currentThrowableObject;
         return currentObject;
     }
-
-    //delete
-    private void OnDrawGizmos() 
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(lastPosition, sphereRadius);
-    }
-
 
     private void DrawProjection(GameObject currentObject)
     {
@@ -112,7 +82,8 @@ public class PredictTrajectory : MonoBehaviour
             {
                 lineRenderer.SetPosition(i, hit.point);
                 lineRenderer.positionCount = i + 1;
-               
+                //Debug.Log(lastPosition); //Activate box shadow in last position
+                boxPredictionPrefab.transform.position = lastPosition;
                 return;
             }
         }
